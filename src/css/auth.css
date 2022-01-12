@@ -1,0 +1,39 @@
+.text_auth {
+    font-style: italic;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 24px;
+    text-align: right;
+    color: #FFC83B;
+    cursor: pointer;
+}
+
+.wrapper-modal {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px 24px 16px 24px;
+
+    width: 387px;
+    height: 144px;
+
+    background: #FFFFFF;
+    box-shadow: 0px 8px 48px #0A2839;
+    border-radius: 16px;
+}
+
+.modal-content {
+    padding: 5px 20px 5px 5px;
+    display: block;
+    z-index: 100;
+    background: #FFFFFF !important;
+    box-shadow: 0px 8px 48px rgba(10, 40, 57, 0.3) !important;
+    border-radius: 24px !important;
+    width: 328px !important;
+    left: 0px;
+    margin: 10px;
+    width: 250px;
+    position: absolute;
+    top: 10px;
+    text-align: center;
+}

@@ -1,0 +1,26 @@
+/* app global css */
+@use postcss-simple-vars;
+$myPeremen: green;
+
+html, body {
+    font-family: 'baseFontChess' !important
+}
+
+$postcss-simple-vars: blue;
+.item {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.testFontText {
+    font-family: 'baseFontChess'
+}
+
+.itemColor {
+    background-color: $myPeremen;
+}
+
+@font-face {
+    font-family: baseFontChess;
+    src: url("../fonts/hauss_var.ttf");
+}
