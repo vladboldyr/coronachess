@@ -1,3 +1,3 @@
 export const ENLocale = {
-    title: "Chess Generation"
+  title: 'Chess Generation'
 }

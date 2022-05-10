@@ -1,4 +1,5 @@
 import Echo from 'laravel-echo'
+import { boot } from 'quasar/wrappers'
 
 window.Pusher = require('pusher-js')
 
@@ -11,7 +12,8 @@ const echo = new Echo({
   disableStats: true
 })
 
-export default ({ Vue }) => {
-  Vue.use(echo);
-  Vue.prototype.$echo = echo;
-}
+export default boot(({ app }) => {
+  app.use(echo)
+  app.config.devtools = true
+  app.config.globalProperties.$echo = echo
+})

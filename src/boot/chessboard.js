@@ -1,14 +1,15 @@
-import chessboard from 'components/chessboard/index.vue'
+import chessboard from 'components/chessboard/ChessBoard.vue'
+import { boot } from 'quasar/wrappers'
 
 // Install the components
-export function install (Vue) {
-  Vue.component('chessboard', chessboard)
-  /* -- Add more components here -- */
-}
+// export function install (Vue) {
+//   Vue.component('chessboard', chessboard)
+//   /* -- Add more components here -- */
+// }
 
 // Expose the components
 export {
-  chessboard,
+  chessboard
   /* -- Add more components here -- */
 }
 
@@ -18,11 +19,15 @@ export {
 // Plugin
 const plugin = {
   /* eslint-disable no-undef */
-  version: '1.0',
-  install,
+  version: '1.0'
+  // install,
 }
 
-export default plugin
+export default boot(({ app }) => {
+  app.use(chessboard)
+})
+
+// export default plugin
 
 // Auto-install
 let GlobalVue = null

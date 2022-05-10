@@ -47,14 +47,14 @@
 </template>
 
 <script>
-    export default {
-        data() {
-            return {
-                username: 'Pratik',
-                password: '12345'
-            }
-        },
+export default {
+  data () {
+    return {
+      username: 'Pratik',
+      password: '12345'
     }
+  }
+}
 </script>
 
 <style>

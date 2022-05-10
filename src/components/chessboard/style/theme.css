@@ -2,14 +2,15 @@
  * Chessground base css properties.
  *
  * You need to include the css files in themes folder in order to have the
- * board and pieces displayed!
+ * wrapper-board and pieces displayed!
  */
 
 .cg-wrap {
-  width: 320px;
-  height: 320px;
+  width: 328px;
+  height: 328px;
   position: relative;
   display: block;
+  border-radius: 8px;
 }
 
 cg-helper {
@@ -51,7 +52,10 @@ cg-board square {
   pointer-events: none;
 }
 cg-board square.move-dest {
-  background: radial-gradient(rgba(20, 85, 30, 0.5) 22%, #208530 0, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0) 0);
+  /*background: #000000;
+  opacity: 0.15;*/
+  background: radial-gradient(rgba(0, 0, 0, 0.3) 16%, rgba(0, 0, 0, 0) 0);
+  /*background: radial-gradient(rgba(20, 85, 30, 0.5) 22%, #208530 0, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0) 0);*/
   pointer-events: auto;
 }
 cg-board square.premove-dest {
@@ -64,17 +68,19 @@ cg-board square.oc.premove-dest {
   background: radial-gradient(transparent 0%, transparent 80%, rgba(20, 30, 85, 0.2) 80%);
 }
 cg-board square.move-dest:hover {
-  background: rgba(20, 85, 30, 0.3);
+  background: rgba(255, 184, 0, 0.7);
+  /*background: rgba(20, 85, 30, 0.3);*/
 }
 cg-board square.premove-dest:hover {
   background: rgba(20, 30, 85, 0.2);
 }
 cg-board square.last-move {
+  opacity: 80%;
   will-change: transform;
-  background-color: rgba(155, 199, 0, 0.41);
+  background-color: #FFC83B;/*rgba(155, 199, 0, 0.41);*/
 }
 cg-board square.selected {
-  background-color: rgba(20, 85, 30, 0.5);
+  background: rgba(255, 184, 0, 0.7);
 }
 cg-board square.check {
   background: radial-gradient(ellipse at center, rgba(255, 0, 0, 1) 0%, rgba(231, 0, 0, 1) 25%, rgba(169, 0, 0, 0) 89%, rgba(158, 0, 0, 0) 100%);
@@ -86,8 +92,8 @@ cg-board square.current-premove {
   position: absolute;
   top: 0;
   left: 0;
-  width: 12.5%;
-  height: 12.5%;
+  width: 13.5%;
+  height: 13.5%;
   background-size: cover;
   z-index: 2;
   will-change: transform;
@@ -131,12 +137,14 @@ cg-board piece.fading {
   position: absolute;
   display: flex;
   pointer-events: none;
-  opacity: 0.8;
+  /*opacity: 0.8;*/
   font-size: 9px;
 }
 .cg-wrap coords.ranks {
-  right: -15px;
-  top: 0;
+  /* right: -15px; */
+ /* top: -15px;*/
+  left: 1px;
+  bottom: 5%;
   flex-flow: column-reverse;
   height: 100%;
   width: 12px;
@@ -145,13 +153,13 @@ cg-board piece.fading {
   flex-flow: column;
 }
 .cg-wrap coords.files {
-  bottom: -16px;
-  left: 0;
+  bottom: -4px;
+  left: -1px;
   flex-flow: row;
   width: 100%;
   height: 16px;
-  text-transform: uppercase;
-  text-align: center;
+  text-transform: lowercase;
+  text-align: end;
 }
 .cg-wrap coords.files.black {
   flex-flow: row-reverse;
@@ -167,44 +175,44 @@ cg-board piece.fading {
  * Board
  */
 .blue .cg-wrap {
-  background-image: url('../images/board/blue.svg');
+  background-image: url('../images/board/customBoard/Desk_marked_copy.svg');
 }
 
 .merida .cg-wrap piece.pawn.white {
-  background-image: url('../images/pieces/merida/wP.svg');
+  background-image: url('../images/pieces/custom/wP.svg');
 }
 .merida .cg-wrap piece.bishop.white {
-  background-image: url('../images/pieces/merida/wB.svg');
+  background-image: url('../images/pieces/custom/wB.svg');
 }
 .merida .cg-wrap piece.knight.white {
-  background-image: url('../images/pieces/merida/wN.svg');
+  background-image: url('../images/pieces/custom/wN.svg');
 }
 .merida .cg-wrap piece.rook.white {
-  background-image: url('../images/pieces/merida/wR.svg');
+  background-image: url('../images/pieces/custom/wR.svg');
 }
 .merida .cg-wrap piece.queen.white {
-  background-image: url('../images/pieces/merida/wQ.svg');
+  background-image: url('../images/pieces/custom/wQ.svg');
 }
 .merida .cg-wrap piece.king.white {
-  background-image: url('../images/pieces/merida/wK.svg');
+  background-image: url('../images/pieces/custom/wK.svg');
 }
 .merida .cg-wrap piece.pawn.black {
-  background-image: url('../images/pieces/merida/bP.svg');
+  background-image: url('../images/pieces/custom/bP.svg');
 }
 .merida .cg-wrap piece.bishop.black {
-  background-image: url('../images/pieces/merida/bB.svg');
+  background-image: url('../images/pieces/custom/bB.svg');
 }
 .merida .cg-wrap piece.knight.black {
-  background-image: url('../images/pieces/merida/bN.svg');
+  background-image: url('../images/pieces/custom/bN.svg');
 }
 .merida .cg-wrap piece.rook.black {
-  background-image: url('../images/pieces/merida/bR.svg');
+  background-image: url('../images/pieces/custom/bR.svg');
 }
 .merida .cg-wrap piece.queen.black {
-  background-image: url('../images/pieces/merida/bQ.svg');
+  background-image: url('../images/pieces/custom/bQ.svg');
 }
 .merida .cg-wrap piece.king.black {
-  background-image: url('../images/pieces/merida/bK.svg');
+  background-image: url('../images/pieces/custom/bK.svg');
 }
 
 .in3d .cg-wrap {
@@ -227,7 +235,7 @@ cg-board piece.fading {
   /* original size:
   width: 140.625%;
   height: 179.6875%; */
-  /* size on 3D board, with height/width = 90.78571% */
+  /* size on 3D wrapper-board, with height/width = 90.78571% */
   width: 16.741%;
   height: 23.563%;
   left: -1.85%;

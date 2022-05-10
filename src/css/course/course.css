@@ -1,0 +1,290 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind responsive;
+@tailwind variants;
+
+.wrapper {
+  background: var(--bg-def);
+  overflow: hidden;
+}
+
+.q-layout__section--marginal {
+  background-color: inherit;
+}
+
+@layer utilities {
+  @variants responsive {
+
+    .title {
+      color: #fff;
+      font-style: var(--defMobileFontStyle);
+      font-weight: var(--defMobileFontWeigth);
+      font-size: 24px;
+      line-height: 24px;
+      text-align: center;
+    }
+
+    .header {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-mark {
+      width: 40px;
+      height: 40px;
+      padding-left: 16px;
+    }
+
+    .info_course-wrapper {
+      position: absolute;
+      z-index: -1;
+      bottom: 0;
+      top: 43%;
+      left: 28%;
+    }
+
+    .info_course {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .block_active {
+      display: flex;
+      color: #FFFFFF;
+      opacity: 1 !important;
+    }
+
+    .block_text {
+      opacity: 0.5;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 24px;
+    }
+
+    .wrapper-footer {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 8px;
+      flex-basis: auto;
+      flex-grow: 1;
+    }
+
+    .btn_previous, .btn_next, .btn_pause, .btn_start, .btn_tasks {
+      background: rgba(7, 30, 41, 0.9) no-repeat;
+      border-radius: 8px;
+      cursor: pointer;
+      min-width: 64px;
+      width: auto;
+      height: 48px;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+
+    .btn_next i {
+      transform: rotate(-180deg)
+    }
+
+    .btn_start {
+      flex-grow: 1;
+      display: flex;
+    }
+
+    .btn_pause {
+      flex-grow: 1;
+      display: flex;
+      background-color: #FFC83B;
+    }
+
+    .btn_tasks {
+      padding: 12px 24px;
+      margin-right: 0;
+      flex-grow: 2;
+      display: flex;
+      justify-content: center;
+    }
+
+    .btn_tasks p {
+      font-size: 18px;
+    }
+
+    .arrow_block {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: auto;
+      width: 15px;
+      height: 24px;
+      mask: url("../../assets/icons/arrow_block_previous.svg") no-repeat 0 0;
+      background-color: #244A5E;
+      /*background: url("../../assets/icons/arrow_block_previous.svg") no-repeat scroll 0 0 transparent;*/
+    }
+
+    .pause_block {
+      display: flex;
+      margin: auto;
+      width: 18px;
+      height: 24px;
+      background: url("../../assets/icons/pause_block.svg") no-repeat 0 0 transparent;
+      /*mask:url("../../assets/icons/pause_block.svg") no-repeat 0 0;*/
+    }
+    .play_block {
+      display: flex;
+      margin: auto;
+      width: 20px;
+      height: 24px;
+      background: url("../../assets/icons/play_block.svg") no-repeat 0 0 transparent;
+    }
+
+    @screen sl {
+
+      .header {
+        justify-content: space-around;
+        padding: 5px 10px 0px 20px;
+      }
+
+      .title {
+        font-size: 18px;
+        margin-right: auto;
+        padding-left: 10px;
+      }
+
+      .btn-back {
+        height: 40px;
+        width: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        cursor: pointer;
+      }
+
+      .custom-arrow {
+        transform: rotate(180deg);
+      }
+
+      .info_course-wrapper {
+        position: absolute;
+        z-index: -1;
+        bottom: 0;
+        top: 43%;
+        left: 0;
+      }
+
+      .info_course {
+        padding: 16px;
+        /*overflow: hidden;*/
+        display: flex;
+        flex-direction: column;
+        position: relative;
+      }
+
+      .block_text {
+        opacity: 0.5;
+        font-style: italic;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 24px;
+      }
+
+      .arrow_exit {
+        width: 30px;
+        height: 24px;
+        background: url("../../assets/icons/arrow_exit_icon.svg") no-repeat scroll 0 0 transparent;
+      }
+
+      .btn-mark {
+        width: 40px;
+        height: 40px;
+      }
+
+      .footer {
+        padding: 0 0 8px 0;
+      }
+
+      .btn_previous, .btn_next, .btn_pause, .btn_start, .btn_tasks {
+        background: rgba(7, 30, 41, 0.9) no-repeat;
+        border-radius: 8px;
+        cursor: pointer;
+        min-width: 64px;
+        width: auto;
+        height: 48px;
+        margin-right: 8px;
+        vertical-align: middle;
+      }
+
+      .btn_next i {
+        transform: rotate(-180deg)
+      }
+
+      .btn_start {
+        flex-grow: 1;
+        display: flex;
+      }
+
+      .btn_pause {
+        flex-grow: 1;
+        display: flex;
+        background-color: #FFC83B;
+      }
+
+      .btn_tasks {
+        padding: 12px 24px;
+        margin-right: 0;
+        flex-grow: 2;
+        display: flex;
+        justify-content: center;
+      }
+
+      .btn_tasks p {
+        font-size: 18px;
+      }
+
+      .arrow_block {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+        width: 15px;
+        height: 24px;
+        mask: url("../../assets/icons/arrow_block_previous.svg") no-repeat 0 0;
+        background-color: #244A5E;
+        /*background: url("../../assets/icons/arrow_block_previous.svg") no-repeat scroll 0 0 transparent;*/
+      }
+
+      .pause_block {
+        display: flex;
+        margin: auto;
+        width: 18px;
+        height: 24px;
+        background: url("../../assets/icons/pause_block.svg") no-repeat 0 0 transparent;
+        /*mask:url("../../assets/icons/pause_block.svg") no-repeat 0 0;*/
+      }
+      .play_block {
+        display: flex;
+        margin: auto;
+        width: 20px;
+        height: 24px;
+        background: url("../../assets/icons/play_block.svg") no-repeat 0 0 transparent;
+      }
+
+      .wrapper-footer {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 8px;
+        flex-basis: auto;
+        flex-grow: 1;
+      }
+    }
+  }
+}
+
+.active {
+  background-color: #FFFFFF !important;
+}

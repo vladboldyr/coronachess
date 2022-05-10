@@ -1,0 +1,11 @@
+query puzzle($id: ID!) {
+  puzzle(id: $id) {
+    id
+    name
+    position
+    solution
+    tags {
+      name_ru
+    }
+  }
+}

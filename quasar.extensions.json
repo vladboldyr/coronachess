@@ -1,6 +1,7 @@
 {
-  "qhierarchy": {},
   "@quasar/qcalendar": {},
-  "@quasar/apollo": {},
+  "@quasar/apollo": {
+    "typescript": true
+  },
   "@quasar/qmediaplayer": {}
 }

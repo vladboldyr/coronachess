@@ -9,21 +9,16 @@
     </div>
 </template>
 
-
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
-import "../../css/custom/input.css";
+import { Vue, Options } from 'vue-class-component'
+import { Prop } from 'vue-property-decorator'
+import '../../css/custom/input.css'
 
-
-@Component
+@Options({})
 export default class InputCustom extends Vue {
-
-    @Prop({required: true, type: Function, default: ''}) isEmail!: Function;
-    @Prop({required: true, type: String, default: ''}) text!: string;
-    @Prop({required: true, type: String, default: ''}) placeholder!: string;
+    @Prop({ required: true, type: Function, default: '' }) isEmail!: Function;
+    @Prop({ required: true, type: String, default: '' }) text!: string;
+    @Prop({ required: true, type: String, default: '' }) placeholder!: string;
     // @Prop({required: true, type: HTMLElement, default: ''}) btnContent!: HTMLElement;
-
-
-
 }
 </script>

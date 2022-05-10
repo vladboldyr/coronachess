@@ -9,31 +9,30 @@
     </div>
 </template>
 
-
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Vue, Options } from 'vue-class-component'
+import { Prop } from 'vue-property-decorator'
 
-import "../../css/popup/popup.css";
+import '../../css/popup/popup.css'
 
-@Component
+@Options({})
 export default class CustomPopup extends Vue {
-    @Prop({required: true, type: String, default: 'message'}) readonly text!: string;
+    @Prop({ required: true, type: String, default: 'message' }) readonly text!: string;
 
     private isShown: boolean = false;
 
-    get isMobile(): boolean {
-        return window.matchMedia('(max-width: 450px)').matches;
+    get isMobile (): boolean {
+      return window.matchMedia('(max-width: 450px)').matches
     }
 
-    private hoverInDesktop(): void {
-        if (this.isMobile) return;
-        this.toggle();
+    private hoverInDesktop (): void {
+      if (this.isMobile) return
+      this.toggle()
     }
 
-    private toggle(): void {
-        this.isShown = !this.isShown;
-        console.log(`isShown ${this.isShown}`);
+    private toggle (): void {
+      this.isShown = !this.isShown
+      console.log(`isShown ${this.isShown}`)
     }
-
 }
 </script>

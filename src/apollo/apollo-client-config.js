@@ -1,6 +1,3 @@
-// const graphQLEndpoint = window.location.protocol + '//' + window.location.host + '/graphql'
-// const graphQLWSEndpoint = ((window.location.protocol === 'https:') ? 'wss:' : 'ws:') + '//' + window.location.host + '/graphql-subscriptions'
-
 export default async function (/* { app, router, store, ssrContext, urlPath, redirect } */) {
   return {
     default: {

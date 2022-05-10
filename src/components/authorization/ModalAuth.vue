@@ -10,32 +10,28 @@
     </div>
 </template>
 
-
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Vue, Options } from 'vue-class-component'
+import { Prop } from 'vue-property-decorator'
 
-import "../../css/auth.css";
-import InputCustom from "../custom/InputCustom.vue";
+import '../../css/auth.css'
+import InputCustom from '../custom/InputCustom.vue'
 
-const iconVK = require("../../assets/icons/vk_icon.svg");
-const iconGoogle = require("../../assets/icons/google_icon.svg");
+const iconVK = require('../../assets/icons/vk_icon.svg')
+const iconGoogle = require('../../assets/icons/google_icon.svg')
 
-
-
-
-@Component({
-    components: {
-        InputCustom: InputCustom
-    }
+@Options({
+  components: {
+    InputCustom: InputCustom
+  }
 })
 export default class ModalAuth extends Vue {
     private iconVK = iconVK;
     private iconGoogle = iconGoogle;
 
-    @Prop({required: true, type: Function, default: ''}) isEmail!: Function;
+    @Prop({ required: true, type: Function, default: '' }) isEmail!: () => void;
 
-    private text : string = "fdfd";
-    private placeholder : string = "placeholder";
-
+    private text : string = 'fdfd';
+    private placeholder : string = 'placeholder';
 }
 </script>

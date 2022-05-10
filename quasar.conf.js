@@ -9,7 +9,18 @@
 module.exports = function (/* ctx */) {
   return {
     // https://quasar.dev/quasar-cli/supporting-ts
-    supportTS: true,
+    // supportTS: true,
+    // TO DO вернуть после исправления ошибки
+    supportTS: {
+      tsCheckerConfig: {
+        eslint: {
+          enabled: true,
+          files: './src/**/*.{ts,tsx,js,jsx,vue}'
+        }
+      }
+    },
+
+    dev: true,
 
     // https://quasar.dev/quasar-cli/prefetch-feature
     // preFetch: true,
@@ -18,6 +29,7 @@ module.exports = function (/* ctx */) {
     // --> boot files are part of "main.js"
     // https://quasar.dev/quasar-cli/boot-files
     boot: [
+      'apollo',
       'i18n',
       'axios',
       'apex',
@@ -46,6 +58,7 @@ module.exports = function (/* ctx */) {
 
     // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-build
     build: {
+      devtool: 'source-map',
       vueRouterMode: 'history', // available values: 'hash', 'history'
 
       // transpile: false,
@@ -66,7 +79,7 @@ module.exports = function (/* ctx */) {
 
       // https://quasar.dev/quasar-cli/handling-webpack
       extendWebpack (cfg) {
-    
+
       },
       chainWebpack (chain, { isServer, isClient }) {
         chain.module.rule('vue')
@@ -82,13 +95,16 @@ module.exports = function (/* ctx */) {
               }
             }
             return options
-          });
+          })
+        chain
+          .module
+          .rule('esm')
+          .test(/\.m?js?$/)
+          .resolve.set('fullySpecified', false)
         chain.module.rule('gql')
           .test(/\.(graphql|gql)$/)
           .use('graphql-tag/loader')
           .loader('graphql-tag/loader')
-
-
         // chain.module.rule('css')
         // .test(/\.css$/)
         // .loader('postcss-loader')
@@ -104,14 +120,27 @@ module.exports = function (/* ctx */) {
       https: false,
       port: 8080,
       host: '0.0.0.0',
-      public: 'https://ccq.l.cidious.com',
+      client: {
+        // Can be `string`:
+        //
+        // To get protocol/hostname/port from browser
+        // webSocketURL: 'auto://0.0.0.0:0/ws'
+        //   webSocketURL: {
+        //     hostname: "0.0.0.0",
+        //     pathname: "/ws",
+        //     port: 8080,
+        //   }
+        webSocketURL: 'auto://0.0.0.0:0/ws'
+      },
+      // public : 'https://ccq.l.cidious.com',
+      // webSocketURL: 'ws://ccq.l.cidious.com',
       open: false // opens browser window automatically
     },
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-framework
     framework: {
       iconSet: 'material-icons', // Quasar icon set
-      lang: 'en-us', // Quasar language pack
+      // lang: 'en-Us', // Quasar language pack
       config: {},
 
       // Possible values for "importStrategy":

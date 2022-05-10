@@ -1,13 +1,10 @@
 <template>
-  <div id="q-app">
-    <router-view />
-  </div>
+  <router-view />
 </template>
 
 <script>
-import "tailwindcss/tailwind.css";
-import "./css/app.css";
-
+import 'tailwindcss/tailwind.css'
+import './css/app.css'
 
 export default {
   name: 'App'

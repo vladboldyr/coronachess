@@ -2,12 +2,13 @@
     "extends": "@quasar/app/tsconfig-preset",
     "compilerOptions": {
       "baseUrl": ".",
-      "target": "es5",
+      "target": "ES2020",
         // это обеспечивает более строгий вывод для свойств данных в `this`
-        "strict": true,
+        "strict": false,
         // при использовании webpack 2+ или rollup, добавить поддержку tree-shaking:
-        "module": "es2015",
+        "module": "CommonJS",
         "moduleResolution": "node",
-        "sourceMap": true
+      "experimentalDecorators": true,
+      "sourceMap": true
     }
   }

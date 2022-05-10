@@ -138,15 +138,15 @@
 </template>
 
 <script>
-    export default {
-        name: "UserProfile",
-        data() {
-            return {
-                user_details: {},
-                password_dict: {}
-            }
-        }
+export default {
+  name: 'UserProfile',
+  data () {
+    return {
+      user_details: {},
+      password_dict: {}
     }
+  }
+}
 </script>
 
 <style scoped>

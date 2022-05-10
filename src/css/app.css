@@ -1,26 +1,56 @@
 /* app global css */
-@use postcss-simple-vars;
-$myPeremen: green;
-
 html, body {
     font-family: 'baseFontChess' !important
-}
-
-$postcss-simple-vars: blue;
-.item {
-    display: flex;
-    flex-flow: row wrap;
-}
-
-.testFontText {
-    font-family: 'baseFontChess'
-}
-
-.itemColor {
-    background-color: $myPeremen;
 }
 
 @font-face {
     font-family: baseFontChess;
     src: url("../fonts/hauss_var.ttf");
 }
+
+$defFontWeight: 650;
+$maxWidthContainer: 1720px;
+$maxWidthPageContainer: 900px;
+$md1:1520px;
+$md2:1320px;
+$md3:970px;
+$md4:750px;
+
+:root {
+  --defFontWeight: $defFontWeight;
+  --maxWidthPageContainer: $maxWidthPageContainer;
+  --maxWidthContainer: $maxWidthContainer;
+  --md1:1520px;
+  --md2:1320px;
+  --md3:970px;
+  --md4:750px;
+  --bg-def: linear-gradient(252.59deg, #2D5C76 0.26%, #0E2D3F 100.3%);
+  --defMobileFontWeigth: normal;
+  --defMobileFontStyle: italic;
+}
+
+
+
+:global (.container) {
+  margin: 0 auto;
+  max-width: $maxWidthContainer;
+  @media(max-width: $maxWidthContainer) {
+    max-width: $md1;
+  }
+  @media(max-width: $md1) {
+    max-width: $md2;
+  }
+  @media(max-width: $md2) {
+    max-width: $md3;
+  }
+  @media(max-width: $md3) {
+    max-width: $md4;
+  }
+}
+
+:global(.arrow) {
+    width:32px;
+    height:20px;
+    background: url("../assets/icons/btn_arrow_right_icon.svg") no-repeat scroll 0 0 transparent;
+}
+
