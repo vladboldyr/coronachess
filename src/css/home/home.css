@@ -1,0 +1,47 @@
+.home-header {
+  margin-top: 3%;
+  text-align: center;
+}
+
+.home-title {
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 35px;
+  width: 232px;
+  display: flex;
+  margin: 0 auto;
+}
+
+.home-navBar {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.menu-list {
+  display: flex;
+  justify-content: space-between;
+}
+
+.menu-list div {
+  padding-right: 24px;
+  cursor: pointer;
+}
+
+.menu-list div:hover {
+  animation: animate 2s ease-in-out infinite;
+}
+
+@keyframes animate {
+
+  0%,
+  40%,
+  100% {
+    transform: translateY(0);
+  }
+
+  20% {
+    transform: translateY(-10px);
+  }
+}
+

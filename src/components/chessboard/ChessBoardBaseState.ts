@@ -86,6 +86,10 @@ export class ChessBoardBaseState implements IChessBoardState {
     this.__promoteTo = newPromoteTo;
   }
 
+  public set fen(newFen: string) {
+    this.__fen = newFen;
+  }
+
   public get config(): Config {
     return this.__config;
   }

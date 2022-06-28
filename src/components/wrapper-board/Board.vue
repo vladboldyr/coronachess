@@ -1,5 +1,5 @@
 <template>
-  <chessboard class="board-wrap" @onMove="onMove" :props="propsChild" />
+  <chessboard class="board-wrap" @onMove="onMove" :fen="fen" :props="propsChild" />
 </template>
 
 <script lang="ts">
@@ -11,6 +11,8 @@ import gql from 'graphql-tag'
 import ChessBoard from 'components/chessboard/ChessBoard.vue';
 import OldChessBoard from 'components/chessboard/OldChessBoard.vue';
 import {ChessBoardCustom, ChessBoardProps} from 'components/chessboard/ChessBoardCustom/ChessBoardCustom.vue';
+import {loadByIdPuzzle, loadPuzzle} from 'src/apollo/getFen';
+import {ref, watch, reactive} from 'vue';
 
 @Options({
   components: {
@@ -25,17 +27,26 @@ export default class Board extends Vue {
     return styles
   } */
 
+  private fen = ref('');
+  private puzzle: object = { position: '' }
+
+  created() {
+    this.puzzle['position'] = loadByIdPuzzle();
+    /* watch(puzzle, result => {
+      this.puzzle['position'] = result; // .puzzle.position;
+    }); */
+  }
+
   get propsChild(): ChessBoardProps {
     const fen = this.puzzle['position'];
     return {
       fen,
-      showThreats: true
+      showThreats: false
     };
   }
 
-  private puzzle: object = { position: '' }
   private onMove (data) {
-    console.log(this.appolo)
+    // console.log(this.appolo)
     console.log('onmove', data)
     // @ts-ignore
     window.Pusher?.instances[0]?.connection?.connection?.transport?.socket.send(JSON.stringify({
@@ -45,34 +56,12 @@ export default class Board extends Vue {
     }))
   }
 
-  /* data: [{
-      c1: 'Ae2e4', c2: 159, c3: 6
-    }, {
-      c1: 'Be2e4', c2: 72, c3: 5
-    }, {
-      c1: 'Ce2e4', c2: 180, c3: 9
-    }, {
-      c1: 'De2e4', c2: 1, c3: 22
-    }], */
-  /* filter: '',
-      puzzle: { position: '' },
-      show_filter: false,
-      columns: [{
-        name: 'c1',
-        required: true,
-        label: 'C1',
-        align: 'left',
-        field: row => row.c1
-      }, { name: 'c2', align: 'center', label: 'C2', field: 'c2' }, {
-        name: 'c3', align: 'center', label: 'C3', field: 'c3'
-      }],
-      offer: [] */
   get appolo() {
     return {
       apollo: {
         puzzle: {
           query: gql`
-          query puzzleMethod($id: Int!) {
+          query puzzleMethod($id: ID!) {
             puzzle(id: $id) {
               id
               name
@@ -87,10 +76,10 @@ export default class Board extends Vue {
             id: 1367
           },
           result (result) {
-            console.log(result);
+            console.log('result =>', result);
           },
           update ({ allRes }) {
-            console.log(allRes);
+            console.log('allRes', allRes);
           }
         }
       }

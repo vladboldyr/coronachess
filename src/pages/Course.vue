@@ -35,6 +35,9 @@
 </template>
 
 <script lang="ts">
+import { watch } from 'vue'
+import {useQuery, useResult} from '@vue/apollo-composable'
+import gql from 'graphql-tag'
 import Board from 'components/wrapper-board/Board.vue'
 import CourseFooter from '../layouts/CourseFooter.vue'
 import {Options, Vue} from 'vue-class-component'
@@ -45,6 +48,19 @@ export interface ICourse {
   title: string;
 }
 const mark = require('../assets/icons/book_mark.svg')
+const GET_PUZZLE = gql`
+          query {
+            puzzle(id: 1367) {
+              id
+              name
+              position
+              solution
+              tags {
+               name_ru
+              }
+            }
+          }
+    `;
 
 @Options({
   components: {
@@ -60,6 +76,32 @@ export default class Course extends Vue {
   private activeIndex: number = 0;
   private activatedLesson: boolean = true;
   private itemsHeightBlock: Array<any> = [];
+
+  created() {
+    /*   const { result, loading, error } = useQuery(GET_PUZZLE);
+    const puzzle = useResult(result, null, data => data.puzzle);
+
+    watch(result, value => {
+      console.log('znachenie', value)
+    }); */
+
+    this.loadPuzzle();
+  }
+
+  /**
+   * Загрузка расстановки фигур на доске
+   * */
+  private loadPuzzle() {
+    const { result, onResult } = useQuery(GET_PUZZLE);
+    onResult(queryResult => {
+      console.log(queryResult.data)
+      console.log(queryResult.loading)
+      console.log(queryResult.networkStatus)
+    })
+    watch(result, value => {
+      console.log('data', value);
+    });
+  }
 
   private getStyleObject(index: number): any {
     const element = this?.$refs?.items && this.$refs.items[index];
@@ -97,6 +139,20 @@ export default class Course extends Vue {
   }
 
   private getNextBlock(): void {
+    /* const { result, loading, error, refetch } = useQuery(GET_PUZZLE);
+    refetch();
+    watch(result, value => {
+      console.log('znachenie', value)
+    });
+
+    watch(loading, value => {
+      console.log('loading', value)
+    });
+
+    watch(error, value => {
+      console.log('error', value)
+    }); */
+
     if (this.activeIndex === this.textCourse.length - 1) return;
     this.activeIndex = this.activeIndex + 1;
   }

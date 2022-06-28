@@ -21,11 +21,31 @@ export default class ChessBoard extends Vue {
   // Не работают дефолтные значения!!!
   // TO DO разобртаться почему
  @Prop({default: {fen: '', free: false, showThreats: false, onPromotion: () => 'q', orientation: 'white' }}) props!: ChessBoardProps;
+ @Prop({default: ''}) fen: string;
  protected boardState: IChessBoardState;
 
  created() {
-   this.boardState = new ChessBoardBaseState(this.props.fen);
+   this.boardState = new ChessBoardBaseState(this._fen/* this.props.fen */);
+
+   // пока оставлю тут
+   /* watch(() => this.props, (first, second) => {
+     console.log(
+       'Watch props.selected function called with args:',
+       first,
+       second
+     );
+   });
+
+   watch(() => this.fen, (first, second) => {
+     console.log(
+       'Watch props.selected function called with args:',
+       first,
+       second
+     );
+   }); */
  }
+
+ private _fen = '';
 
  public init() {
    const {config} = this.boardState;
@@ -35,9 +55,22 @@ export default class ChessBoard extends Vue {
    })
  }
 
+ @Watch('props.fen')
+ propsFenChanged(newFen) {
+   console.log('props.fen', newFen);
+   this.boardState.fen = newFen;
+   this.boardState.board.set({
+     fen: newFen
+   })
+ }
+
  @Watch('fen')
  fenChanged(newFen) {
-   this.$emit('fen', newFen)
+   this.$emit('fen', newFen);
+   this.boardState.fen = newFen;
+   this.boardState.board.set({
+     fen: newFen
+   })
    // this.fen = newFen
    this.loadPosition()
  }
@@ -56,6 +89,14 @@ export default class ChessBoard extends Vue {
    if (this.showThreats) {
      this.paintThreats()
    }
+ }
+
+ /* onUpdated(()=> {
+  console.log('onUpdated')
+}) */
+
+ onMounted() {
+   console.log('onMounted');
  }
 
  mounted() {
@@ -199,8 +240,12 @@ export default class ChessBoard extends Vue {
  }
 
  loadPosition () {
+   /* const position = loadPuzzle();
+   watch(position, result => {
+     this._fen = result.puzzle.position;
+   }); */
    // set a default value for the configuration object itself to allow call to loadPosition()
-   this.boardState.game.load(this.props.fen)
+   this.boardState.game.load(this._fen/* this.props.fen */)
    this.afterMove()
  }
 }
